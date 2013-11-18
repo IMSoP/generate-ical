@@ -1,8 +1,6 @@
 #!/usr/bin/ruby -w
 
 # Path to custom-installed Ruby Gems
-ENV['GEM_HOME'] = '/home/rweccouk/ruby/gems'
-
 require 'rubygems'
 require 'date'
 require 'cgi'
