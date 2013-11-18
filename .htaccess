@@ -1,0 +1,16 @@
+RewriteEngine On
+
+# Generate or serve a calendar based on its .in file
+RewriteRule (.*)\.ics$ generate.rb?file=$1 [L]
+
+# For debugging purposes, allow a file to be fetched with a "plain" content-type
+RewriteRule (.*)\.ics\.txt$ generate.rb?file=$1&send_plain=true [L]
+
+# View source if requested with no params
+RewriteCond %{QUERY_STRING} ^$
+RewriteRule generate\.rb$ - [H=default-handler,T=text/plain]
+
+# Alternative style: .rb.src extension
+RewriteRule generate\.rb\.src$ $1.rb?view_source=true [L]
+RewriteCond %{QUERY_STRING} view_source=true
+RewriteRule generate\.rb$ - [H=default-handler,T=text/plain]
