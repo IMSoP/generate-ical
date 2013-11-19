@@ -40,10 +40,37 @@ begin
 		cal = Calendar.new
 		
 		dates.each { |event|
-			cal.event do
-				dtstart       Date.parse event[0].strip
-				dtend         dtstart + 1
-				summary       event[1].strip
+			start_datetime = DateTime.parse event[0].strip
+
+			# Detect if this is a whole day or timed event
+			if start_datetime == start_datetime.to_date
+				# Time is midnight, so assume whole day event
+				cal.event do
+					dtstart       start_datetime.to_date
+					dtend         start_datetime.to_date + 1
+					summary       event[1].strip
+					if event[2]
+						description   event[2].strip
+					end
+				end
+			else
+				# Assume a separate end time will be provided
+				# (There must be a better way of saying "this date at this other time"
+				#	than concatenating their string values, surely?)
+				end_datetime = DateTime.parse( start_datetime.to_date.to_s + ' ' + event[1].strip )
+				# Events crossing midnight need special consideration
+				if end_datetime < start_datetime
+					end_datetime += 1
+				end
+
+				cal.event do
+					dtstart       start_datetime
+					dtend         end_datetime
+					summary       event[2].strip
+					if event[3]
+						description   event[3].strip
+					end
+				end
 			end
 		}
 		
