@@ -2,4 +2,4 @@
 18 Nov 2013 19:00 | 20:30    | BrightonPHP: Low Latency Logging | Location: The Skiff\nSpeaker: James Titcumb\n\nSummary: Logging is an absolute must for any API or web application, but when starting out, questions such as .how can we do it without disrupting everything else. and .what is the easiest way to log. often come out. I.m going to explore a couple of infrastructure ideas to carry out what I call .high-performance, low-latency. logging to ensure minimal impact to the performance of the runtime application. The talk will show you that a really great logging architecture is a low-cost investment in your application that will definitely pay off in the long run.
 18 Nov 2013 23:30    | 00:30 | Late night hacking
 31 Dec 2013 00:00:01 | 00:05 | Happy New Year!
-4 November 2014	             | Rowan's 0x20th Birthday
+4 November 2014              | Rowan's 0x20th Birthday
